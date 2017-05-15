@@ -27,6 +27,8 @@ namespace Tem {
             #else
             EditorApplication.NewScene();
             #endif
+
+            GameObject cam = Camera.main.gameObject; DestroyImmediate(cam);
         }
 
 

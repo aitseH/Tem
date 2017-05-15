@@ -176,6 +176,7 @@ namespace Tem {
             }
         }
 
+
         protected static WeaponDB weaponDB;
         protected static List<int> weaponIDList=new List<int>();
         protected static string[] weaponLabel;

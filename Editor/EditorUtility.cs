@@ -27,12 +27,6 @@ namespace Tem {
                 GUI.DrawTextureWithTexCoords(rect, t, r);
             }
 
-            //~ if(addXButton){
-            //~ rect.width=12;  rect.height=12;
-            //~ bool flag=GUI.Button(rect, "X", GetXButtonStyle());
-            //~ return flag;
-            //~ }
-
             return false;
         }
 
