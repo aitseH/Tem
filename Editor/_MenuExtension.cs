@@ -33,10 +33,15 @@ namespace Tem {
 
 
 
-        [MenuItem("Tools/Tem/ Editor 01", false, 10)]
-        static void OpenEditor01() {
+        [MenuItem("Tools/Tem/ Weapon Editor", false, 10)]
+        static void OpenWeaponEditor() {
             WeaponEditorWindow.Init();
         }
+
+        [MenuItem ("Tools/Tem/ Effect Editor", false, 10)]
+		static void OpenEffectEditor () {
+			EffectEditorWindow.Init();
+		}
 
     }
 }

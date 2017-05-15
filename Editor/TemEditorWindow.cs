@@ -118,6 +118,7 @@ namespace Tem {
             loaded = true;
 
             LoadWeapon();
+            LoadEffect();
 
             headerStyle=new GUIStyle("Label");
             headerStyle.fontStyle=FontStyle.Bold;
@@ -175,6 +176,19 @@ namespace Tem {
                 Repaint();
             }
         }
+
+        protected static EffectDB effectDB;
+        protected static List<int> effectIDList = new List<int>();
+        protected static string[] effectLabel;
+        protected static void LoadEffect(){ TemEditor.LoadEffect(); }
+        protected static void UpdateLabel_Effect() { TemEditor.UpdateLabel_Effect(); }
+        public static void SetEffectDB(EffectDB db, List<int> IDList, string[] label) {
+            effectDB=db;
+            effectIDList = IDList;
+            effectLabel=label;
+        }
+
+
 
 
         protected static WeaponDB weaponDB;
