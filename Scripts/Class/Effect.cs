@@ -12,6 +12,7 @@ namespace Tem
   {
 
     public string desp = "";
+    public bool invincible;
 
 
     public Effect Clone()

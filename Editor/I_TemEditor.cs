@@ -49,6 +49,17 @@ namespace Tem {
         }
 
 
+		protected static CollectibleDB collectibleDB;
+		protected static List<int> collectibleIDList=new List<int>();
+		protected static string[] collectibleLabel;
+		protected static void LoadCollectible(){ TemEditor.LoadCollectible(); }
+		protected static void UpdateLabel_Collectible(){ TemEditor.UpdateLabel_Collectible(); }
+		public static void SetCollectibleDB(CollectibleDB db, List<int> IDList, string[] label){
+			collectibleDB=db;
+			collectibleIDList=IDList;
+			collectibleLabel=label;
+		}
+
 
 		protected static EffectDB effectDB;
 		protected static List<int> effectIDList=new List<int>();

@@ -17,7 +17,60 @@ namespace Tem {
             return obj==null ? false : PrefabUtility.GetPrefabType(obj)==PrefabType.Prefab;
         }
 
+        public static bool IsPrefabInstance(GameObject obj){
+			return obj==null ? false : PrefabUtility.GetPrefabType(obj)==PrefabType.PrefabInstance;
+		}
+
         public static bool dirty =false;
+
+        
+        public static int GetCollectibleIndex(int itemID){
+			for(int i=0; i<collectibleDB.collectibleList.Count; i++){
+				if(collectibleDB.collectibleList[i].ID==itemID) return (i+1);
+			}
+			return 0;
+		}
+
+        public static bool ExistInDB(Collectible collectible){ return collectibleDB.collectibleList.Contains(collectible); }
+
+
+        protected static CollectibleDB collectibleDB;
+		protected static List<int> collectibleIDList=new List<int>();
+		protected static string[] collectibleLabel;
+		public static void LoadCollectible(){
+			collectibleDB=CollectibleDB.LoadDB();
+			
+			for(int i=0; i<collectibleDB.collectibleList.Count; i++){
+				if(collectibleDB.collectibleList[i]!=null){
+					//collectibleDB.collectibleList[i].ID=i;
+					collectibleIDList.Add(collectibleDB.collectibleList[i].ID);
+				}
+				else{
+					collectibleDB.collectibleList.RemoveAt(i);
+					i-=1;
+				}
+			}
+			
+			UpdateLabel_Collectible();
+			
+			TemEditorWindow.SetCollectibleDB(collectibleDB, collectibleIDList, collectibleLabel);
+			TemEditorInspector.SetCollectibleDB(collectibleDB, collectibleIDList, collectibleLabel);
+		}
+		public static void UpdateLabel_Collectible(){
+			collectibleLabel=new string[collectibleDB.collectibleList.Count+1];
+			collectibleLabel[0]="Unassigned";
+			for(int i=0; i<collectibleDB.collectibleList.Count; i++){
+				string name=collectibleDB.collectibleList[i].name;
+				if(name=="") name="unnamed";
+				while(Array.IndexOf(collectibleLabel, name)>=0) name+="_";
+				collectibleLabel[i+1]=name;
+			}
+			
+			TemEditorWindow.SetCollectibleDB(collectibleDB, collectibleIDList, collectibleLabel);
+			TemEditorInspector.SetCollectibleDB(collectibleDB, collectibleIDList, collectibleLabel);
+			
+			dirty=!dirty;
+		}
 
 
 

@@ -38,6 +38,11 @@ namespace Tem {
             WeaponEditorWindow.Init();
         }
 
+        [MenuItem ("Tools/Tem/Collectible Editor", false, 10)]
+		static void OpenCollectibleEditor () {
+			CollectibleEditorWindow.Init();
+		}
+
         [MenuItem ("Tools/Tem/ Effect Editor", false, 10)]
 		static void OpenEffectEditor () {
 			EffectEditorWindow.Init();
